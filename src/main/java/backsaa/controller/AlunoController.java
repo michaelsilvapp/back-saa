@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import backsaa.entity.AlunoEntity;
+import backsaa.entity.HorariosEntity;
 import backsaa.service.AlunoService;
 
 @RestController
@@ -38,6 +39,18 @@ public class AlunoController {
 		return new ResponseEntity<>(dadosAlunos, HttpStatus.OK);
 	}
 	
+	@RequestMapping(method=RequestMethod.GET, value ="/aluno/{id}", produces= "application/json")
+	public ResponseEntity<AlunoEntity> getHorario(@PathVariable Integer id) {
+		
+		AlunoEntity dadosAluno = alunoService.getById(id); 
+		
+		if(dadosAluno == null){
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		else {
+			return new ResponseEntity<>(dadosAluno, HttpStatus.OK);
+		}
+	}
 	//Remove
 	@RequestMapping(method=RequestMethod.DELETE, value ="/alunos/{id}")
 	public ResponseEntity<AlunoEntity> deleteAluno(@PathVariable Integer id) {

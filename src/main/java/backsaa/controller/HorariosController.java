@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import backsaa.entity.HorariosEntity;
+import backsaa.entity.SetoresEntity;
 import backsaa.service.HorariosService;
 
 @RestController
@@ -35,12 +36,25 @@ public class HorariosController {
 	//GETALL
 	@RequestMapping(method=RequestMethod.GET, value="/horarios", produces= "application/json")
 	public ResponseEntity<List<HorariosEntity>> gethorarios(HorariosEntity Horarios) {
-		
+	
 		List<HorariosEntity> dadosHorarios = horariosService.getAll();
-		System.out.println(dadosHorarios);
+		
 		return new ResponseEntity<>(dadosHorarios, HttpStatus.OK);
 	}
-	
+		
+	@RequestMapping(method=RequestMethod.GET, value ="/horario/{id}", produces= "application/json")
+	public ResponseEntity<HorariosEntity> getHorario(@PathVariable Integer id) {
+		
+		HorariosEntity dadosHorario = horariosService.getById(id); 
+		
+		if(dadosHorario == null){
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		else {
+			return new ResponseEntity<>(dadosHorario, HttpStatus.OK);
+		}
+	}
+		
 	//Remove
 	@RequestMapping(method=RequestMethod.DELETE, value ="/horarios/{id}")
 	public ResponseEntity<HorariosEntity> deleteHorarios(@PathVariable Integer id) {

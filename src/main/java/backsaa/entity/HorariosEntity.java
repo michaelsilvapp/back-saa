@@ -1,6 +1,8 @@
 package backsaa.entity;
 
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,14 +19,14 @@ public class HorariosEntity {
 	@Column(name = "hr_finializacao", nullable = true)
 	private String hrFinalizacao;
 	
-	@ManyToOne
-	private SetoresEntity setor;
+	@ManyToMany
+	private List<SetoresEntity> setor;
 
-	public SetoresEntity getSetor() {
+	public List<SetoresEntity> getSetor() {
 		return setor;
 	}
 
-	public void setSetor(SetoresEntity setor) {
+	public void setSetor(List<SetoresEntity> setor) {
 		this.setor = setor;
 	}
 
@@ -52,12 +54,12 @@ public class HorariosEntity {
 		this.hrInicio = hrInicio;
 	}
 
-	public String getHrFinalizcao() {
+	public String getHrFinalizacao() {
 		return hrFinalizacao;
 	}
 
-	public void setHrFinalizcao(String hrFinalizcao) {
-		this.hrFinalizacao = hrFinalizcao;
+	public void setHrFinalizacao(String hrFinalizacao) {
+		this.hrFinalizacao = hrFinalizacao;
 	}
 
 	

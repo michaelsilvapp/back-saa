@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import backsaa.entity.AtendentesEntity;
+import backsaa.entity.HorariosEntity;
 import backsaa.service.AtendentesService;
 
 @RestController
@@ -22,11 +23,10 @@ public class AtendentesController {
   
 	  @Autowired
 	  AtendentesService atendenteService;
-	  
-		
+	 	
 		//ADD
-		@RequestMapping(method=RequestMethod.POST, value ="/atendente", consumes="application/json")
-		public ResponseEntity<AtendentesEntity> insertatendente(@RequestBody AtendentesEntity atendente) {
+		@RequestMapping(method=RequestMethod.POST, value ="/atendentes", consumes="application/json")
+		public ResponseEntity<AtendentesEntity> insertAtendente(@RequestBody AtendentesEntity atendente) {
 			
 			AtendentesEntity dadosAtendente = atendenteService.insert(atendente); 
 			
@@ -34,16 +34,30 @@ public class AtendentesController {
 		}
 		
 		//GETALL
-		@RequestMapping(method=RequestMethod.GET, value="/atendente", produces= "application/json")
-		public ResponseEntity<List<AtendentesEntity>> getatendentes(AtendentesEntity atendente) {
+		@RequestMapping(method=RequestMethod.GET, value="/atendentes", produces= "application/json")
+		public ResponseEntity<List<AtendentesEntity>> getAtendentes(AtendentesEntity atendente) {
 			
 			List<AtendentesEntity> dadosAtendentes = atendenteService.getAll();
 			return new ResponseEntity<>(dadosAtendentes, HttpStatus.OK);
 		}
 		
+		@RequestMapping(method=RequestMethod.GET, value ="/atendente/{id}", produces= "application/json")
+		public ResponseEntity<AtendentesEntity> getAtendente(@PathVariable Integer id) {
+			
+			AtendentesEntity dadosAtendentes = atendenteService.getById(id); 
+			
+			if(dadosAtendentes == null){
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+			else {
+				return new ResponseEntity<>(dadosAtendentes, HttpStatus.OK);
+			}
+		}
+		
+		
 		//Remove
 		@RequestMapping(method=RequestMethod.DELETE, value ="/atendente/{id}")
-		public ResponseEntity<AtendentesEntity> deleteatendente(@PathVariable Integer id) {
+		public ResponseEntity<AtendentesEntity> deleteAtendente(@PathVariable Integer id) {
 			
 			AtendentesEntity dadosAtendente = atendenteService.getById(id); 
 			
@@ -56,8 +70,8 @@ public class AtendentesController {
 			}
 		}
 		
-		@RequestMapping(method=RequestMethod.PUT, value ="/atendente")
-		public ResponseEntity<AtendentesEntity> updateatendente(@RequestBody AtendentesEntity atendente) {
+		@RequestMapping(method=RequestMethod.PUT, value ="/atendentes")
+		public ResponseEntity<AtendentesEntity> updateAtendente(@RequestBody AtendentesEntity atendente) {
 			
 			AtendentesEntity dadosAtendente = atendenteService.update(atendente); 
 			

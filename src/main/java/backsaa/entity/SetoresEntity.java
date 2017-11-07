@@ -27,7 +27,7 @@ public class SetoresEntity {
 	private int qtdFuncionarios;
 	
 	
-	@OneToMany
+	@ManyToMany
 	private List<HorariosEntity> horarios;
 	
 	public int getId() {

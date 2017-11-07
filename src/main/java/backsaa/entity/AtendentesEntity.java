@@ -17,8 +17,19 @@ public class AtendentesEntity {
 	private String nome;
 	
 	@Column
+	private String email; 
+	
+	@Column
 	private String senha;
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	@ManyToOne
 	private SetoresEntity setores;
 
