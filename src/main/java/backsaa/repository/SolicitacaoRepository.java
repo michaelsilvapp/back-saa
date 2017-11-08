@@ -1,5 +1,7 @@
 package backsaa.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,13 +14,11 @@ import backsaa.entity.SolicitacaoEntity;
 public interface SolicitacaoRepository extends JpaRepository<SolicitacaoEntity, Integer>  {
    
 
-	
-	
-	//@Query(value = "SELECT * FROM SolicitacaoEntity s INNER JOIN AlunoEntity a ON s.idAluno = :a.idAluno" ).setParameter
-	//("idaluno", idaluno).getSingleResult()
-	
-    @Query(value="Select u.idAluno from AlunoEntity u where u.idAluno=:idaluno")
-     public AlunoEntity buscaid(@Param("idaluno") int idAluno);
+    @Query(value="SELECT s from SolicitacaoEntity s LEFT JOIN fetch s.alunos LEFT JOIN fetch s.setores")
+    public List<SolicitacaoEntity> getSoliStudent();
+    
+    @Query(value="select hr_atendimento, count(hr_atendimento) from SolicitacaoEntity group by hr_atendimento")
+    public List<String[]> getHorarios();
     
     
 }
