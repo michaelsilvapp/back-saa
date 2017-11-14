@@ -12,6 +12,9 @@ import backsaa.entity.SetoresEntity;
 public interface SetoresRepository extends JpaRepository<SetoresEntity, Integer> {
 	
 	@Query(value= "SELECT s FROM SetoresEntity s LEFT JOIN fetch s.horarios")
-    public List<SetoresEntity> gethorasetor();
+    public static List<SetoresEntity> gethoraSetor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

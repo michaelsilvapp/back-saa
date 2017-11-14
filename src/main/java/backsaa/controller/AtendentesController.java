@@ -77,5 +77,18 @@ public class AtendentesController {
 			
 			return new ResponseEntity<>(dadosAtendente, HttpStatus.OK);
 		}
-	
+		
+		//validação e senha atendentes
+		@RequestMapping(method=RequestMethod.GET, value ="/authenticate-atendente/{email}/{senha}", produces="application/json")
+		public ResponseEntity<AtendentesEntity> autenticaty(@PathVariable String email, @PathVariable String senha) {
+			
+			AtendentesEntity dadosAtendentes = atendenteService.authenticate(email, senha); 
+			
+			if(dadosAtendentes == null){
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+			else {
+				return new ResponseEntity<>(dadosAtendentes, HttpStatus.OK);
+			}
+		}
 }

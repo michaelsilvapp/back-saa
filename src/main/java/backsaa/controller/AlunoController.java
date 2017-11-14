@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import backsaa.entity.AlunoEntity;
+import backsaa.entity.AtendentesEntity;
 import backsaa.entity.HorariosEntity;
 import backsaa.service.AlunoService;
 
@@ -44,6 +45,7 @@ public class AlunoController {
 		
 		AlunoEntity dadosAluno = alunoService.getById(id); 
 		
+		
 		if(dadosAluno == null){
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -73,5 +75,19 @@ public class AlunoController {
 		
 		return new ResponseEntity<>(dadosAluno, HttpStatus.OK);
 	}
+	
+	@RequestMapping(method=RequestMethod.GET, value ="/authenticate-aluno/{email}/{senha}", produces="application/json")
+	public ResponseEntity<AlunoEntity> autenticaty(@PathVariable String email, @PathVariable String senha) {
+		
+		AlunoEntity dadosAlunos = alunoService.authenticate(email, senha); 
+		
+		if(dadosAlunos == null){
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		else {
+			return new ResponseEntity<>(dadosAlunos, HttpStatus.OK);
+		}
+	}
+	
 	
 }

@@ -60,4 +60,14 @@ public class SolicitacaoController {
 			
 			return new ResponseEntity<>(dadosSolicitacao, HttpStatus.OK);
 		}
+		
+		//TESTE DO METODO GETSOLIStudent
+		@RequestMapping(method=RequestMethod.GET, value="/solicitacaoaluno", produces= "application/json")
+		public ResponseEntity<List<SolicitacaoEntity>> getsolicitacao(SolicitacaoService Solicitacaoaluno) {	
+			List<SolicitacaoEntity> dadossolicitacao = solicitacaoService.getSoliStudent();
+			return new ResponseEntity<>(dadossolicitacao, HttpStatus.OK);
+		}
+		
+		
+		
 }

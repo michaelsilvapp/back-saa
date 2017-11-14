@@ -39,7 +39,12 @@ public class SolicitacaoService {
 		return solicitacaoRepository.save(solicitacao); 
 	}
 	
+	public List<SolicitacaoEntity> getSoliStudent(){
+		return solicitacaoRepository.getSoliStudent();
+	}
 	
-	
+	public List<String[]> getHorarios(){
+		return solicitacaoRepository.getHorarios();
+	}
 	
 }

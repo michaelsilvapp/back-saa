@@ -10,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
 import backsaa.entity.AlunoEntity;
+import backsaa.entity.AtendentesEntity;
 import backsaa.repository.AlunoRepository;
 
 @Service
@@ -38,6 +39,11 @@ public class AlunoService {
 	public AlunoEntity update(AlunoEntity aluno) {
 		return alunoRepository.save(aluno); 
 	}
+	
+	public AlunoEntity authenticate(String email, String senha) {
+		return alunoRepository.authenticate(email, senha) ;
+	}
+		
 	
 
 	

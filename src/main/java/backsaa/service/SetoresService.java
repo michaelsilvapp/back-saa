@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import backsaa.entity.SetoresEntity;
 import backsaa.repository.SetoresRepository;
+import backsaa.repository.SolicitacaoRepository;
 
 @Service
 public class SetoresService {
@@ -37,4 +38,9 @@ public class SetoresService {
 	public SetoresEntity update(SetoresEntity setores) {
 		return setoresRepository.save(setores); 
 	}
+	
+	public List<SetoresEntity> gethoraSetor(){
+		return SetoresRepository.gethoraSetor();
+	}
+	
 }

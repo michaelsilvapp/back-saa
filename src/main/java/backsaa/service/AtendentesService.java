@@ -39,4 +39,11 @@ public class AtendentesService {
 		return atendentesRepository.save(atendente); 
 	}
 	
+	public List<AtendentesEntity> getatendenteHorario(){
+		return atendentesRepository.getatendenteHorario();
+	}
+	
+	public AtendentesEntity authenticate(String email, String senha) {
+		return atendentesRepository.authenticate(email, senha) ;
+	}
 }
