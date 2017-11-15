@@ -20,7 +20,7 @@ public interface SolicitacaoRepository extends JpaRepository<SolicitacaoEntity, 
 	
     
     @Query(value="SELECT hr_atendimento, count(hr_atendimento) from SolicitacaoEntity group by hr_atendimento")
-    public List<String[]> getHorarios();
+    public List<String[]> getCountHorarios();
     
     
 }

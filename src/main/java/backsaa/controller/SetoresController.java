@@ -13,7 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import backsaa.entity.SetoresEntity;
+import backsaa.entity.SolicitacaoEntity;
 import backsaa.service.SetoresService;
+import backsaa.service.SolicitacaoService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
@@ -72,6 +74,12 @@ public class SetoresController {
 			SetoresEntity dadossetores = setoresService.update(setores); 
 			
 			return new ResponseEntity<>(dadossetores, HttpStatus.OK);
+		}
+		
+		@RequestMapping(method=RequestMethod.GET, value="/setor-horario", produces= "application/json")
+		public ResponseEntity<List<SetoresEntity>> getSetoresHorario(SetoresEntity SetoresHorario) {	
+			List<SetoresEntity> dadossolicitacao = setoresService.gethoraSetor();
+			return new ResponseEntity<>(dadossolicitacao, HttpStatus.OK);
 		}
 
 }

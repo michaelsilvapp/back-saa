@@ -63,10 +63,17 @@ public class SolicitacaoController {
 		
 		//TESTE DO METODO GETSOLIStudent
 		@RequestMapping(method=RequestMethod.GET, value="/solicitacaoaluno", produces= "application/json")
-		public ResponseEntity<List<SolicitacaoEntity>> getsolicitacao(SolicitacaoService Solicitacaoaluno) {	
+		public ResponseEntity<List<SolicitacaoEntity>> getsolicite(SolicitacaoEntity Solicitacaoaluno) {	
 			List<SolicitacaoEntity> dadossolicitacao = solicitacaoService.getSoliStudent();
 			return new ResponseEntity<>(dadossolicitacao, HttpStatus.OK);
 		}
+		
+		@RequestMapping(method=RequestMethod.GET, value="/conta-horario", produces= "application/json")
+		public ResponseEntity<List<String[]>> getcontar(SolicitacaoEntity ContaHorario) {	
+			List<String[]> dadossolicitacao = solicitacaoService.getCountHorarios();
+			return new ResponseEntity<>(dadossolicitacao, HttpStatus.OK);
+		}
+		
 		
 		
 		

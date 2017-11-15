@@ -43,8 +43,8 @@ public class SolicitacaoService {
 		return solicitacaoRepository.getSoliStudent();
 	}
 	
-	public List<String[]> getHorarios(){
-		return solicitacaoRepository.getHorarios();
+	public List<String[]> getCountHorarios(){
+		return solicitacaoRepository.getCountHorarios();
 	}
 	
 }

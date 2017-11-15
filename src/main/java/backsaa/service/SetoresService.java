@@ -40,7 +40,7 @@ public class SetoresService {
 	}
 	
 	public List<SetoresEntity> gethoraSetor(){
-		return SetoresRepository.gethoraSetor();
+		return setoresRepository.gethoraSetor();
 	}
 	
 }
