@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import backsaa.entity.AlunoEntity;
 import backsaa.entity.AtendentesEntity;
-import backsaa.entity.HorariosEntity;
 import backsaa.service.AlunoService;
 
 @RestController

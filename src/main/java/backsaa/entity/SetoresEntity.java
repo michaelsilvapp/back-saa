@@ -26,15 +26,14 @@ public class SetoresEntity {
 	@Column(name = "quant_funcionario", nullable = true)
 	private int qtdFuncionarios;
 	
-	
-	@ManyToMany
-	private List<HorariosEntity> horarios;
-	
-	public int getId() {
-		return idSetor;
-	}
+	@Column(name = "minuto", nullable = true)
+	private int minuto;
 
-	public void setId(int idSetor) {
+	public int getIdSetor() {
+		return idSetor;
+	}	
+
+	public void setIdSetor(int idSetor) {
 		this.idSetor = idSetor;
 	}
 
@@ -46,33 +45,28 @@ public class SetoresEntity {
 		this.setor = setor;
 	}
 
-	public String getMin_atendimento() {
+	public String getMinAtendimento() {
 		return minAtendimento;
 	}
 
-	public void setMin_atendimento(String min_atendimento) {
-		this.minAtendimento = min_atendimento;
+	public void setMinAtendimento(String minAtendimento) {
+		this.minAtendimento = minAtendimento;
 	}
 
-	public int getQuant_funcionario() {
+	public int getQtdFuncionarios() {
 		return qtdFuncionarios;
 	}
 
-	public void setQuant_funcionario(int qtdFuncionarios) {
+	public void setQtdFuncionarios(int qtdFuncionarios) {
 		this.qtdFuncionarios = qtdFuncionarios;
 	}
 
-	public List<HorariosEntity> getHorarios() {
-		return horarios;
+	public int getMinuto() {
+		return minuto;
 	}
 
-	public void setHorarios(List<HorariosEntity> horarios) {
-		this.horarios = horarios;
+	public void setMinuto(int minuto) {
+		this.minuto = minuto;
 	}
-
-
-
-
-
 
 }

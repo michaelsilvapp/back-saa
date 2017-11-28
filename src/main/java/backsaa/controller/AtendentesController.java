@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import backsaa.entity.AtendentesEntity;
-import backsaa.entity.HorariosEntity;
 import backsaa.entity.SolicitacaoEntity;
 import backsaa.service.AtendentesService;
 
